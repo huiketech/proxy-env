@@ -16,18 +16,5 @@ then
 
     sed -i s~SERVER_NAME~"${SERVER_NAME}"~g /etc/nginx/conf.d/${SERVER_NAME}.conf
     sed -i s~PROXY_HOST~"${PROXY_HOST}"~g /etc/nginx/conf.d/${SERVER_NAME}.conf
-    sudo certbot --nginx -d ${SERVER_NAME} --agree-tos --email "$EMAIL" -n
-    sed -i s~"listen       80;"~""~g /etc/nginx/conf.d/${SERVER_NAME}.conf
-    echo "
-server {
-    if (\$host = ${SERVER_NAME}) {
-        return 301 https://\$host\$request_uri;
-    } # managed by Certbot
-
-
-    listen       80;
-    server_name  ${SERVER_NAME};
-    return 404; # managed by Certbot
-}
-" >> /etc/nginx/conf.d/${SERVER_NAME}.conf
+    sudo certbot --nginx -d ${SERVER_NAME} --agree-tos --email "$EMAIL" -n --redirect
 fi
