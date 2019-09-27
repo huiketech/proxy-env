@@ -114,6 +114,7 @@ if [[ ${RELEASE_SERVER_NAME} ]];then
 fi
 
 ## 添加计划任务
+# echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew" | sudo tee -a /etc/crontab > /dev/null
 # crontab -e
 # 0 0,12 * * * python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew >/dev/null
 
