@@ -37,6 +37,14 @@ if ! command -v certbot >/dev/null 2>&1; then
     sudo yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
 
     sudo yum install -y python2-certbot-nginx
+
+    str_crontab=`sudo cat /etc/crontab`
+    str_search="certbot renew"
+    result=$(echo $str_crontab | grep "${str_search}")
+    if [[ "$result" == "" ]]
+    then
+        echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew >> /var/log/certbot.renew.log" | sudo tee -a /etc/crontab > /dev/null
+    fi
 fi
 
 ## 创建 Nginx 配置文件
