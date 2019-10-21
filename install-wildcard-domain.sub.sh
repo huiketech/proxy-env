@@ -9,7 +9,7 @@ fi
 
 proxy_host=http://127.0.0.1:5882
 
-#/root/.acme.sh/acme.sh --issue --dns dns_gd -d *.${1}
+/root/.acme.sh/acme.sh --issue --dns dns_gd -d *.${1}
 
 mkdir -p /etc/nginx/ssl/${1}
 /root/.acme.sh/acme.sh --installcert -d *.${1} \
