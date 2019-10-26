@@ -52,7 +52,7 @@ host_array=(
     'ciurw.xyz'
 );
 
-domain_proxy_ip=185.251.248.223
+domain_proxy_ip=103.100.63.137
 
 scp ./install-wildcard-domain.sub.sh root@${domain_proxy_ip}:/root/install-wildcard-domain.sub.sh
 for element in ${host_array[@]}

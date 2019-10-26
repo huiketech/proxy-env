@@ -71,6 +71,16 @@ API_4_SERVER_NAME=
 API_4_PROXY_HOST=
 API_5_SERVER_NAME=
 API_5_PROXY_HOST=
+API_6_SERVER_NAME=
+API_6_PROXY_HOST=
+API_7_SERVER_NAME=
+API_7_PROXY_HOST=
+API_8_SERVER_NAME=
+API_8_PROXY_HOST=
+API_9_SERVER_NAME=
+API_9_PROXY_HOST=
+API_10_SERVER_NAME=
+API_10_PROXY_HOST=
 
 ADMIN_SERVER_NAME=
 ADMIN_PROXY_HOST=
@@ -107,6 +117,21 @@ if [[ ${API_4_SERVER_NAME} ]];then
 fi
 if [[ ${API_5_SERVER_NAME} ]];then
     sh ./install.sub.sh ${API_5_SERVER_NAME} ${API_5_PROXY_HOST} ./conf.d/common.conf.example
+fi
+if [[ ${API_6_SERVER_NAME} ]];then
+    sh ./install.sub.sh ${API_6_SERVER_NAME} ${API_6_PROXY_HOST} ./conf.d/common.conf.example
+fi
+if [[ ${API_7_SERVER_NAME} ]];then
+    sh ./install.sub.sh ${API_7_SERVER_NAME} ${API_7_PROXY_HOST} ./conf.d/common.conf.example
+fi
+if [[ ${API_8_SERVER_NAME} ]];then
+    sh ./install.sub.sh ${API_8_SERVER_NAME} ${API_8_PROXY_HOST} ./conf.d/common.conf.example
+fi
+if [[ ${API_9_SERVER_NAME} ]];then
+    sh ./install.sub.sh ${API_9_SERVER_NAME} ${API_9_PROXY_HOST} ./conf.d/common.conf.example
+fi
+if [[ ${API_10_SERVER_NAME} ]];then
+    sh ./install.sub.sh ${API_10_SERVER_NAME} ${API_10_PROXY_HOST} ./conf.d/common.conf.example
 fi
 
 if [[ ${ADMIN_SERVER_NAME} ]];then
