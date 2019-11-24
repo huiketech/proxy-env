@@ -17,6 +17,8 @@ then
 
     sed -i s~SERVER_NAME~"${SERVER_NAME}"~g /etc/nginx/conf.d/${SERVER_NAME}.conf
     sed -i s~PROXY_HOST~"${PROXY_HOST}"~g /etc/nginx/conf.d/${SERVER_NAME}.conf
-    sed -i s~PROXY_HOST_2~"${PROXY_HOST_2}"~g /etc/nginx/conf.d/${SERVER_NAME}.conf
+    if [[ ${PROXY_HOST_2} ]];then
+        sed -i s~PROXY_HOST_2~"${PROXY_HOST_2}"~g /etc/nginx/conf.d/${SERVER_NAME}.conf
+    fi
     sudo certbot --nginx -d ${SERVER_NAME} --agree-tos --email "$EMAIL" -n --redirect
 fi
