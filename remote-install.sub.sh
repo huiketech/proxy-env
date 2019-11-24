@@ -6,6 +6,8 @@ SERVER_NAME_KEY=${1}
 SERVER_NAME_VALUE=${2}
 PROXY_HOST_KEY=${3}
 PROXY_HOST_VALUE=${4}
+PROXY_HOST_KEY_2=${5}
+PROXY_HOST_VALUE_2=${6}
 
 echo ${SERVER_NAME_VALUE}
 ssh -o StrictHostKeyChecking=no root@${SERVER_NAME_VALUE} "
@@ -52,5 +54,8 @@ fi
 cd /hk/proxy-env && git pull
 echo \"${SERVER_NAME_KEY}=${SERVER_NAME_VALUE}\" > /hk/proxy-env/.env
 echo \"${PROXY_HOST_KEY}=${PROXY_HOST_VALUE}\" >> /hk/proxy-env/.env
+if [[ \"${PROXY_HOST_KEY_2} ]]; then
+    echo \"${PROXY_HOST_KEY_2}=${PROXY_HOST_VALUE_2}\" >> /hk/proxy-env/.env
+fi
 sh /hk/proxy-env/install.sh
 "

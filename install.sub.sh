@@ -8,7 +8,8 @@ EMAIL=lzw122333@gmail.com
 
 SERVER_NAME=${1}
 PROXY_HOST=${2}
-CONF_EXAMPLE=${3}
+PROXY_HOST_2=${3}
+CONF_EXAMPLE=${4}
 
 if [[ ${SERVER_NAME} ]]
 then
@@ -16,5 +17,6 @@ then
 
     sed -i s~SERVER_NAME~"${SERVER_NAME}"~g /etc/nginx/conf.d/${SERVER_NAME}.conf
     sed -i s~PROXY_HOST~"${PROXY_HOST}"~g /etc/nginx/conf.d/${SERVER_NAME}.conf
+    sed -i s~PROXY_HOST_2~"${PROXY_HOST_2}"~g /etc/nginx/conf.d/${SERVER_NAME}.conf
     sudo certbot --nginx -d ${SERVER_NAME} --agree-tos --email "$EMAIL" -n --redirect
 fi
