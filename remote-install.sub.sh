@@ -54,7 +54,7 @@ fi
 cd /hk/proxy-env && git pull
 echo \"${SERVER_NAME_KEY}=${SERVER_NAME_VALUE}\" > /hk/proxy-env/.env
 echo \"${PROXY_HOST_KEY}=${PROXY_HOST_VALUE}\" >> /hk/proxy-env/.env
-if [[ \"${PROXY_HOST_KEY_2} ]]; then
+if [[ \"${PROXY_HOST_KEY_2}\" ]]; then
     echo \"${PROXY_HOST_KEY_2}=${PROXY_HOST_VALUE_2}\" >> /hk/proxy-env/.env
 fi
 sh /hk/proxy-env/install.sh
