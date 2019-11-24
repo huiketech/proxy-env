@@ -2,6 +2,10 @@ server {
     listen       80;
     server_name  SERVER_NAME;
 
+    if ($host != SERVER_NAME) {
+        return 404;
+    }
+
     location / {
         proxy_set_header  Host  $host;
         proxy_set_header  X-real-ip $remote_addr;
