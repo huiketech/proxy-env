@@ -82,7 +82,7 @@ env_file=${PROJECT_ROOT_DIR}/${PROJECT_NAME}/app/www/.env
 for element in "${element_array[@]}"
 do
     eval element_value=\$${element}
-    if [[ "${element}" -eq "APP_NAME" ]];then
+    if [[ "${element}" = "APP_NAME" ]];then
         element_value="${element_value}-agent"
     fi
     sed -i "s@^${element}=[^\r\n]*@${element}=${element_value}@g" "${env_file}"
