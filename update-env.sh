@@ -70,7 +70,7 @@ do
 done
 
 # agent
-env_file=${PROJECT_ROOT_DIR}/${PROJECT_NAME}/app/www/.env
+env_file=${PROJECT_ROOT_DIR}/${PROJECT_NAME}/agent/www/.env
 for element in "${element_array[@]}"
 do
     eval element_value=\$${element}
@@ -81,7 +81,7 @@ do
 done
 
 # admin
-env_file=${PROJECT_ROOT_DIR}/${PROJECT_NAME}/app/www/.env
+env_file=${PROJECT_ROOT_DIR}/${PROJECT_NAME}/admin/www/.env
 for element in "${element_array[@]}"
 do
     eval element_value=\$${element}
