@@ -58,20 +58,12 @@ do
     sed -i "s@^${element}=[^\r\n]*@${element}=${element_value}@g" "${env_file}"
 done
 
-# env
-env_file=${PROJECT_ROOT_DIR}/${PROJECT_NAME}/env/.env
-for element in "${element_array[@]}"
-do
-    eval element_value=\$${element}
-    sed -i "s@^${element}=[^\r\n]*@${element}=${element_value}@g" "${env_file}"
-done
-
 # api
 env_file=${PROJECT_ROOT_DIR}/${PROJECT_NAME}/app/www/.env
 for element in "${element_array[@]}"
 do
     eval element_value=\$${element}
-    if [[ "${element}" -eq "APP_NAME" ]];then
+    if [[ "${element}" = "APP_NAME" ]];then
         element_value="${element_value}-api"
     fi
     sed -i "s@^${element}=[^\r\n]*@${element}=${element_value}@g" "${env_file}"
@@ -93,7 +85,7 @@ env_file=${PROJECT_ROOT_DIR}/${PROJECT_NAME}/app/www/.env
 for element in "${element_array[@]}"
 do
     eval element_value=\$${element}
-    if [[ "${element}" -eq "APP_NAME" ]];then
+    if [[ "${element}" = "APP_NAME" ]];then
         element_value="${element_value}-admin"
     fi
     sed -i "s@^${element}=[^\r\n]*@${element}=${element_value}@g" "${env_file}"
