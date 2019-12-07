@@ -26,6 +26,7 @@ element_array=(
 # app agent admin
     'APP_NAME'
     'APP_DEBUG'
+    'APP_PROXY_HOST'
 
     'SESSION_DOMAIN'
 
