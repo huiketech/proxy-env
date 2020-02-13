@@ -16,6 +16,9 @@ if ! command -v nginx >/dev/null 2>&1; then
     ## yum命令出现 No package epel-release available
     # rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
+    ## yum安装nginx时报错：No package nginx available.
+    # echo -e "[nginx]\nname=nginx repo\nbaseurl=http://nginx.org/packages/centos/\$releasever/\$basearch/\ngpgcheck=0\nenabled=1\n" > /etc/yum.repos.d/nginx.repo
+
     \cp -f ./conf.d/nginx.conf /etc/nginx/nginx.conf
 
     ## 旧系统更新 nginx.conf

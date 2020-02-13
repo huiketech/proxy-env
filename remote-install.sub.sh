@@ -10,6 +10,7 @@ PROXY_HOST_KEY_2=${5}
 PROXY_HOST_VALUE_2=${6}
 
 echo ${SERVER_NAME_VALUE}
+ping -c1 ${SERVER_NAME_VALUE}
 ssh -o StrictHostKeyChecking=no root@${SERVER_NAME_VALUE} "
 if [[ ! -d \"/hk/proxy-env\" ]]; then
     ## 安装 git
@@ -48,6 +49,7 @@ if [[ ! -d \"/hk/proxy-env\" ]]; then
 
     mkdir -p /hk/proxy-env
     cd /hk/proxy-env
+    ssh -o StrictHostKeyChecking=no root@github.com
     git clone git@github.com:huiketech/proxy-env.git .
 fi
 

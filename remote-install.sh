@@ -2,6 +2,8 @@
 # 将执行目录移动到 当前文件所在目录
 cd `dirname $0`
 
+# sudo killall -HUP mDNSResponder && sudo killall mDNSResponderHelper && sudo dscacheutil -flushcache
+
 COMMON_SERVER_NAME=
 COMMON_PROXY_HOST=
 
