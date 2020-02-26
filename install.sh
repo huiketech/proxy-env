@@ -20,6 +20,8 @@ if ! command -v nginx >/dev/null 2>&1; then
     # echo -e "[nginx]\nname=nginx repo\nbaseurl=http://nginx.org/packages/centos/\$releasever/\$basearch/\ngpgcheck=0\nenabled=1\n" > /etc/yum.repos.d/nginx.repo
 
     \cp -f ./conf.d/nginx.conf /etc/nginx/nginx.conf
+    \cp -f ./conf.d/default_server.crt /etc/nginx/default_server.crt
+    \cp -f ./conf.d/default_server.key /etc/nginx/default_server.key
 
     ## 旧系统更新 nginx.conf
     # cd /web/env && git pull && \cp -f ./proxy/conf.d/nginx.conf /etc/nginx/nginx.conf && nginx -s reload
