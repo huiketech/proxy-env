@@ -1,30 +1,112 @@
 #!/usr/bin/env bash
-
 # 将执行目录移动到 当前文件所在目录
 cd `dirname $0`
 
-domain_name_array=(
-'api.3.baitongjinfu.com'
-)
+# sudo killall -HUP mDNSResponder && sudo killall mDNSResponderHelper && sudo dscacheutil -flushcache
 
-host_ip=18.163.17.193
+COMMON_SERVER_NAME=
+COMMON_PROXY_HOST=
 
-for domain_name in "${domain_name_array[@]}"
-do
-    echo '====start====';
-    echo ${domain_name};
-    # 返回 1 表示不存在
-    php remote-delete.php ${domain_name} ${host_ip}
-    OP_MODE=$?
-    echo ${OP_MODE}
-    if [[ ${OP_MODE} == '1' ]];then
-        echo '开始删除';
-        echo ${domain_name};
-        ssh root@${host_ip} "
-            rm -rf /etc/nginx/conf.d/${domain_name}.conf
-            certbot delete --cert-name ${domain_name}
-        "
-    fi
-    echo '====end====';
-    echo '';
-done
+H5_SERVER_NAME=
+H5_PROXY_HOST=
+SOCKET_SERVER_NAME=
+SOCKET_PROXY_HOST=
+
+ONLINE_SERVICE_SERVER_NAME=
+ONLINE_SERVICE_PROXY_HOST=
+ONLINE_SERVICE_PROXY_HOST_2=
+
+API_1_SERVER_NAME=
+API_1_PROXY_HOST=
+API_2_SERVER_NAME=
+API_2_PROXY_HOST=
+API_3_SERVER_NAME=
+API_3_PROXY_HOST=
+API_4_SERVER_NAME=
+API_4_PROXY_HOST=
+API_5_SERVER_NAME=
+API_5_PROXY_HOST=
+API_6_SERVER_NAME=
+API_6_PROXY_HOST=
+API_7_SERVER_NAME=
+API_7_PROXY_HOST=
+API_8_SERVER_NAME=
+API_8_PROXY_HOST=
+API_9_SERVER_NAME=
+API_9_PROXY_HOST=
+API_10_SERVER_NAME=
+API_10_PROXY_HOST=
+
+ADMIN_SERVER_NAME=
+ADMIN_PROXY_HOST=
+AGENT_SERVER_NAME=
+AGENT_PROXY_HOST=
+RELEASE_SERVER_NAME=
+RELEASE_PROXY_HOST=
+
+
+if [[ -f ./.env ]];then
+    source ./.env
+fi
+
+if [[ ${COMMON_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${COMMON_SERVER_NAME}
+fi
+if [[ ${H5_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${H5_SERVER_NAME}
+fi
+if [[ ${SOCKET_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${SOCKET_SERVER_NAME}
+fi
+if [[ ${ONLINE_SERVICE_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${ONLINE_SERVICE_SERVER_NAME} ONLINE_SERVICE_PROXY_HOST ${ONLINE_SERVICE_PROXY_HOST}
+fi
+if [[ ${API_1_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_1_SERVER_NAME}
+fi
+if [[ ${API_2_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_2_SERVER_NAME}
+fi
+if [[ ${API_3_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_3_SERVER_NAME}
+fi
+if [[ ${API_4_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_4_SERVER_NAME}
+fi
+if [[ ${API_5_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_5_SERVER_NAME}
+fi
+if [[ ${API_6_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_6_SERVER_NAME}
+fi
+if [[ ${API_7_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_7_SERVER_NAME}
+fi
+if [[ ${API_8_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_8_SERVER_NAME}
+fi
+if [[ ${API_9_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_9_SERVER_NAME}
+fi
+if [[ ${API_10_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${API_10_SERVER_NAME}
+fi
+
+if [[ ${ADMIN_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${ADMIN_SERVER_NAME}
+fi
+
+if [[ ${AGENT_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${AGENT_SERVER_NAME}
+fi
+
+if [[ ${RELEASE_SERVER_NAME} ]];then
+    sh ./_remote-delete.sub.sh ${RELEASE_SERVER_NAME}
+fi
+
+## 添加计划任务
+# crontab -e
+# 0 0,12 * * * python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew >/dev/null
+
+## 无法转发 (13: Permission denied) while connecting to upstream:[nginx]
+# setsebool -P httpd_can_network_connect 1
