@@ -6,7 +6,7 @@
 注册1年,不续订 
 
 1.2 域名解析 
-线路2的 api.2.xxx.xx  CNAME hk21.apigroup.link
+线路2的 api.2.xxx.xx  CNAME hk2.apigroup.link
 线路3的 api.3.xxx.xx  CNAME hk22.apigroup.link
 线路4的 api.4.xxx.xx  CNAME sg21.apigroup.link
 线路5的 api.5.xxx.xx  CNAME sg22.apigroup.link
