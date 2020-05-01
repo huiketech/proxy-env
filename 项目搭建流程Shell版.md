@@ -111,6 +111,9 @@ REACT_APP_EARLIEST_ANDROID_APP_VERSION=2.0.0
 #安卓应用下载地址
 REACT_APP_ANDROID_APP_DOWNLOAD_URL=https://h5.theyunyi.net/d/p
 
+没有环境的情况下 到env文件下执行
+sh env.build.sh
+搭建环境
 
 在本地proxy-env/目录下 运行
 sh remote-install.sh
